@@ -11,17 +11,13 @@ import {
   FolderKanban,
   Settings,
   HelpCircle,
-  LogOut,
-  ChevronUp,
-  ChevronLeft,
-  ChevronRight,
   Sparkles,
-  Zap,
   X,
   ExternalLink,
   ChevronLast,
   ChevronFirst
 } from "lucide-react";
+import Image from "next/image";
 import { useEffect } from "react";
 
 const navItems = [
@@ -125,9 +121,10 @@ export default function Sidebar() {
           className="w-full relative group overflow-hidden rounded-2xl h-full transition-all duration-300 hover:scale-[1.02] cursor-pointer"
         >
           {/* Background Image */}
-          <img 
+          <Image 
             src="/wbai_banner.png" 
             alt="WBAi Banner" 
+            fill
             className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

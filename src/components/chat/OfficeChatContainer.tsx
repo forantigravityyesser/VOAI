@@ -5,17 +5,13 @@ import {
   Settings, 
   Share, 
   ChevronDown, 
-  Sparkles,
   Image as ImageIcon,
   FileText,
   Code2,
-  Mic,
-  ArrowUp,
-  Paperclip,
   BrainCircuit,
   ClipboardList
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+
 import UserInteractionContainer from "./UserInteractionContainer";
 
 interface Message {
@@ -108,7 +104,6 @@ export default function OfficeChatContainer() {
               <UserInteractionContainer 
                 onSend={handleSend} 
                 isGenerating={isGenerating} 
-                isStarting={isStarting}
               />
             </div>
 
@@ -182,7 +177,6 @@ export default function OfficeChatContainer() {
                 <UserInteractionContainer 
                   onSend={handleSend} 
                   isGenerating={isGenerating} 
-                  isStarting={isStarting}
                 />
               </div>
             </div>

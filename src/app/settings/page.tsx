@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import { 
   User, Shield, Key, Bell, Monitor, RefreshCw, AlertTriangle, Trash2, 
-  CheckCircle2, XCircle, ExternalLink, Mail, Archive, BarChart3
+  CheckCircle2, XCircle, ExternalLink, Mail, Archive, BarChart3,
+  LogOut, Send
 } from "lucide-react";
 
 // UI Components

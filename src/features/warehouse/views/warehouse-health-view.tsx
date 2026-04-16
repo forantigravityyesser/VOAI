@@ -10,19 +10,21 @@ import {
 } from "lucide-react";
 import { AIRecommendation } from "../components/ai-recommendation";
 import { StockTable } from "../components/stock-table";
-import { StockItem } from "@/core/types/warehouse.types";
+import { Stock, DeadStock } from "@/core/types/warehouse.types";
 
 import { EChartsOption } from "echarts";
 
 interface WarehouseHealthViewProps {
   deadStockOption: EChartsOption;
-  stockData: StockItem[];
+  stockData: Stock[];
+  deadStockData: DeadStock[];
   activeColor: string;
 }
 
 export function WarehouseHealthView({ 
   deadStockOption, 
   stockData, 
+  deadStockData,
   activeColor 
 }: WarehouseHealthViewProps) {
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Target, ChevronLeft, TrendingUp, Search, Eye, BarChart3, Globe } from "lucide-react";
+import { Target, ChevronLeft, TrendingUp, Search, BarChart3, Globe } from "lucide-react";
 import Link from "next/link";
 
 export default function CompetitorsPage() {

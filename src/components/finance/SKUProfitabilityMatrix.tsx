@@ -3,12 +3,10 @@
 import React, { useState, useMemo } from "react";
 import ReactECharts from "echarts-for-react";
 import { 
-  Info, 
   TrendingUp, 
   Zap, 
   Target, 
   Trash2, 
-  Filter,
   Maximize2
 } from "lucide-react";
 
@@ -46,14 +44,13 @@ export default function SKUProfitabilityMatrix() {
 
   const chartOption = {
     backgroundColor: 'transparent',
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tooltip: {
       trigger: 'item',
       backgroundColor: '#161923',
       borderColor: '#2a2f45',
       textStyle: { color: '#fff', fontFamily: 'inherit' },
-      formatter: (params: any) => {
-        const item = params.data[3];
+      formatter: (params: unknown) => {
+        const item = (params as { data: [number, number, number, SKU] }).data[3];
         const segName = item.segment === "Scale" ? "Масштабировать" : item.segment === "Promote" ? "Продвигать" : item.segment === "Optimize" ? "Оптимизировать" : "Ликвидировать";
         return `
           <div style="padding: 12px; min-width: 220px;">
@@ -112,16 +109,14 @@ export default function SKUProfitabilityMatrix() {
     series: [
       {
         type: 'scatter',
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        symbolSize: (data: any) => {
+        symbolSize: (data: unknown) => {
           // Reduced size for better density
-          return Math.sqrt(Math.abs(data[2])) / 2.2;
+          return Math.sqrt(Math.abs((data as number[])[2])) / 2.2;
         },
         data: filteredData.map(s => [s.revenue, s.margin, s.profit, s]),
         itemStyle: {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          color: (params: any) => {
-            const seg = params.data[3].segment;
+          color: (params: unknown) => {
+            const seg = (params as { data: [number, number, number, SKU] }).data[3].segment;
             if (seg === "Scale") return '#00d68f';
             if (seg === "Promote") return '#6c5ce7';
             if (seg === "Optimize") return '#ff9f43';

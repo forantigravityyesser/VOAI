@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import ReactECharts from "echarts-for-react";
 import { Zap, Target, AlertCircle, PlayCircle, ShoppingBag, ArrowUpRight, ArrowDownRight, Search } from "lucide-react";
+import Image from "next/image";
 
 // Define interface for chart params
 interface ChartParam {
@@ -19,17 +20,26 @@ const campaignsData = [
 
 export default function AdProfitabilityAnalysis() {
   const [selectedCampaign, setSelectedCampaign] = useState(campaignsData[1]);
-  const days = Array.from({ length: 30 }, (_, i) => `${i + 1} апр`);
+  const days = useMemo(() => Array.from({ length: 30 }, (_, i) => `${i + 1} апр`), []);
   
   // Dynamic mock data based on selected campaign's scale and ad status
   const hasAds = selectedCampaign.spend > 0;
   
-  const { profitBeforeAds, adSpend, netProfit } = useMemo(() => {
-    const pBefore = days.map(() => (Math.random() * 20000 + 30000));
-    const aSpend = days.map(() => hasAds ? (Math.random() * 10000 + 15000) : 0);
+  const { adSpend, netProfit } = useMemo(() => {
+    const seed = selectedCampaign.id;
+    const pBefore = days.map((_, i) => {
+      // Deterministic "random" for UI consistency and purity
+      const val = (Math.sin(seed * 1.5 + i) * 10000) + 30000;
+      return Math.abs(val);
+    });
+    const aSpend = days.map((_, i) => {
+      if (!hasAds) return 0;
+      const val = (Math.cos(seed * 2.1 + i) * 5000) + 10000;
+      return Math.abs(val);
+    });
     const nProfit = pBefore.map((val, i) => val - aSpend[i]);
     return { profitBeforeAds: pBefore, adSpend: aSpend, netProfit: nProfit };
-  }, [hasAds, days.length]); // dependencies are stable
+  }, [hasAds, days, selectedCampaign.id]); // dependencies are stable
 
   const option = {
     backgroundColor: 'transparent',
@@ -165,9 +175,11 @@ export default function AdProfitabilityAnalysis() {
            <div className="bg-dark-900/60 rounded-[2.5rem] border border-white/5 p-8 relative overflow-hidden group/card shadow-inner">
               <div className="flex items-start gap-6 mb-8">
                  <div className="relative">
-                    <img 
+                    <Image 
                       src={selectedCampaign.img} 
                       alt={selectedCampaign.name}
+                      width={96}
+                      height={128}
                       className={`w-24 h-32 object-cover rounded-2xl shadow-xl group-hover/card:scale-105 transition-transform duration-500 ${!selectedCampaign.isActive ? 'grayscale opacity-60' : ''}`} 
                     />
                     <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-dark-900 border border-white/10 flex items-center justify-center shadow-lg">
@@ -237,7 +249,13 @@ export default function AdProfitabilityAnalysis() {
                      }`}
                    >
                      <div className="relative">
-                        <img src={campaign.img} alt={campaign.name} className={`w-10 h-10 object-cover rounded-lg transition-all ${!campaign.isActive ? 'grayscale opacity-40' : ''}`} />
+                        <Image 
+                        src={campaign.img} 
+                        alt={campaign.name} 
+                        width={40}
+                        height={40}
+                        className={`w-10 h-10 object-cover rounded-lg transition-all ${!campaign.isActive ? 'grayscale opacity-40' : ''}`} 
+                      />
                         {!campaign.isActive && (
                           <div className="absolute inset-0 flex items-center justify-center">
                              <div className="w-1.5 h-1.5 rounded-full bg-dark-600"></div>

@@ -2,7 +2,7 @@ import React from "react";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import * as echarts from "echarts";
-import { StockItem, TransitItem, OrderHistoryItem, WarehouseDistribution, WarehouseTab, DeadStock, LocalizationItem, RecommendedPlan } from "@/core/types/warehouse.types";
+import { Stock, TransitItem, OrderHistoryItem, WarehouseDistribution, WarehouseTab, DeadStock, LocalizationItem, RecommendedPlan } from "@/core/types/warehouse.types";
 import { WarehouseHealthView } from "../views/warehouse-health-view";
 import { ProductEfficiencyView } from "../views/product-efficiency-view";
 import { PlanningView } from "../views/planning-view";
@@ -16,7 +16,7 @@ interface WarehouseViewProps {
   gaugeOption: echarts.EChartsOption;
   logQualityOption: echarts.EChartsOption;
   spaceEfficiencyOption: echarts.EChartsOption;
-  stockData: StockItem[];
+  stockData: Stock[];
   goodsInTransit: TransitItem[];
   orderHistory: OrderHistoryItem[];
   deadStockData: DeadStock[];

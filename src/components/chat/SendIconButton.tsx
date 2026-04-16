@@ -1,6 +1,6 @@
 "use client";
 
-import { Send, X, Square } from "lucide-react";
+import { Send, Square } from "lucide-react";
 
 interface SendIconButtonProps {
   canSend: boolean;

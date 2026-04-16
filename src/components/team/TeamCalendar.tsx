@@ -3,21 +3,11 @@
 import React, { useState } from "react";
 import { 
   Plus, 
-  Search, 
-  MoreVertical, 
-  Trash2, 
-  Edit, 
   ChevronLeft, 
   ChevronRight, 
   Clock, 
-  Calendar as CalendarIcon, 
-  Users, 
-  Play, 
-  CheckCircle2, 
   X,
-  Video,
-  ExternalLink,
-  MessageSquare
+  Video
 } from "lucide-react";
 
 interface CalendarEvent {

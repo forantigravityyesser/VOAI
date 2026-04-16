@@ -31,12 +31,12 @@ export default function CashFlowAnalysis() {
       backgroundColor: '#161923',
       borderColor: '#2a2f45',
       textStyle: { color: '#fff' },
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      formatter: (params: any) => {
+      formatter: (params: unknown) => {
+        const pArray = params as { axisValue: string, seriesName: string, value: number, color: string }[];
         return `
           <div style="padding: 10px; font-family: inherit;">
-            <div style="font-weight: 800; margin-bottom: 8px; color: #9099b7;">${params[0].axisValue}</div>
-            ${params.map((p: any) => `
+            <div style="font-weight: 800; margin-bottom: 8px; color: #9099b7;">${pArray[0].axisValue}</div>
+            ${pArray.map((p) => `
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 4px;">
                 <span style="color: #fff; font-size: 11px;">${p.seriesName}</span>
                 <span style="font-weight: 800; color: ${p.color};">${p.value.toLocaleString()} ₽</span>

@@ -24,8 +24,8 @@ export default function LostProfitCalculator() {
       backgroundColor: '#161923',
       borderColor: '#2a2f45',
       textStyle: { color: '#fff', fontSize: 12, fontFamily: 'inherit' },
-      formatter: (params: any) => {
-        const p = params[0];
+      formatter: (params: unknown) => {
+        const p = (params as { name: string, value: number }[])[0];
         return `
           <div style="padding: 10px;">
             <div style="font-weight: 800; color: #9099b7; margin-bottom: 5px; text-transform: uppercase; font-size: 10px;">${p.name}</div>
@@ -58,8 +58,8 @@ export default function LostProfitCalculator() {
         backgroundStyle: { color: 'rgba(255, 255, 255, 0.02)', borderRadius: 8 },
         itemStyle: {
           borderRadius: [0, 8, 8, 0],
-          color: (params: any) => {
-             return lossCategories[params.dataIndex].color;
+          color: (params: unknown) => {
+             return lossCategories[(params as { dataIndex: number }).dataIndex].color;
           },
           shadowBlur: 15,
           shadowColor: 'rgba(255, 71, 87, 0.3)'
@@ -70,7 +70,7 @@ export default function LostProfitCalculator() {
           color: '#fff',
           fontWeight: '900',
           fontSize: 12,
-          formatter: (p: any) => `-${p.value.toLocaleString()} ₽`
+          formatter: (p: unknown) => `-${(p as { value: number }).value.toLocaleString()} ₽`
         },
         data: lossCategories.map(c => c.value)
       }

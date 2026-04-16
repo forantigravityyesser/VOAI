@@ -31,7 +31,7 @@ export default function FinancePage() {
   ];
 
   return (
-    <main className="w-full min-h-full bg-dark-900 overflow-y-auto p-6 md:p-10 custom-scrollbar relative">
+    <main className="flex-1 w-full min-h-screen bg-dark-900 overflow-y-auto overflow-x-hidden p-6 md:p-10 custom-scrollbar relative">
       
       {/* Background Glow */}
       <div className="fixed top-0 right-0 w-[500px] h-[500px] rounded-full blur-[150px] opacity-10 pointer-events-none -mr-48 -mt-48 transition-all duration-1000 bg-accent-purple"></div>
@@ -54,7 +54,7 @@ export default function FinancePage() {
               {tabs.map(tab => (
                 <button 
                   key={tab.id} 
-                  onClick={() => setActiveTab(tab.id as any)} 
+                  onClick={() => setActiveTab(tab.id as "basic" | "advanced")} 
                   className={`px-10 py-3 rounded-2xl text-[13px] font-black transition-all duration-500 tracking-tight flex items-center gap-2 
                     ${activeTab === tab.id 
                       ? "bg-accent-purple text-white shadow-[0_0_20px_rgba(108,92,231,0.3)] scale-105" 

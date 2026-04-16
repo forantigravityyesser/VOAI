@@ -6,10 +6,7 @@ import {
   ChevronRight, 
   TrendingUp, 
   DollarSign, 
-  BarChart, 
   ArrowUpRight, 
-  PlusCircle, 
-  MinusCircle,
   HelpCircle,
   Download
 } from "lucide-react";

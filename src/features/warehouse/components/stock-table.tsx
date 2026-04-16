@@ -2,10 +2,10 @@ import React from "react";
 import { Truck } from "lucide-react";
 import { TableHeader } from "./table-header";
 import { Sparkline } from "./sparkline";
-import { StockItem } from "@/core/types/warehouse.types";
+import { Stock } from "@/core/types/warehouse.types";
 
 interface StockTableProps {
-  stockData: StockItem[];
+  stockData: Stock[];
 }
 
 export function StockTable({ stockData }: StockTableProps) {

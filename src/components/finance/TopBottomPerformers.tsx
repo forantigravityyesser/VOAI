@@ -1,6 +1,6 @@
 "use client";
 
-import { TrendingUp, TrendingDown, ArrowRight } from "lucide-react";
+import { TrendingUp, TrendingDown } from "lucide-react";
 
 export default function TopBottomPerformers() {
 

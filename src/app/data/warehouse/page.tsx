@@ -6,17 +6,7 @@ import * as echarts from "echarts";
 import { 
   Package, 
   ChevronLeft, 
-  RotateCcw, 
-  Zap, 
-  TrendingDown, 
-  ShoppingCart, 
-  AlertCircle,
   Sparkles,
-  Search,
-  ArrowUpRight,
-  ArrowDownRight,
-  ChevronRight,
-  LayoutDashboard,
   BarChart3,
   Truck,
   ArrowUpDown,
@@ -25,8 +15,6 @@ import {
   Target,
   MousePointer2,
   MapPin,
-  Box,
-  Trash2,
   AlertTriangle,
   Activity,
   Layers,
@@ -39,6 +27,7 @@ import {
   Database
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 // --- Components ---
 
@@ -91,7 +80,10 @@ export default function WarehousePage() {
   const [isMounted, setIsMounted] = useState(false);
   const [activeTab, setActiveTab] = useState("Здоровье склада");
 
-  useEffect(() => setIsMounted(true), []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMounted(true);
+  }, []);
 
   const tabs = ["Здоровье склада", "Эффективность товаров", "Планирование запасов"];
 
@@ -109,8 +101,8 @@ export default function WarehousePage() {
         borderWidth: 1,
         textStyle: { color: '#fff' },
         padding: [10, 15],
-        formatter: (params: any) => {
-          const item = params[0];
+        formatter: (params: unknown) => {
+          const item = (params as { data: { value: number, speed: number, daysWithout: number }, name: string }[])[0];
           const data = item.data;
           return `
             <div style="font-family: Inter, sans-serif;">
@@ -156,7 +148,7 @@ export default function WarehousePage() {
         backgroundStyle: { color: 'rgba(255, 255, 255, 0.01)', borderRadius: 8 },
         itemStyle: {
           borderRadius: [8, 8, 0, 0],
-          color: (params: any) => {
+          color: (params: { dataIndex: number }) => {
             const colors = [['#ff4757', '#ff6b81'], ['#ffa94d', '#ffc078'], ['#ff4757', '#ff6b81'], ['#ffa94d', '#ffc078'], ['#00d68f', '#2ce69b'], ['#00d68f', '#2ce69b']];
             return new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: colors[params.dataIndex][1] }, { offset: 1, color: colors[params.dataIndex][0] }]);
           }
@@ -177,7 +169,7 @@ export default function WarehousePage() {
         borderWidth: 1,
         textStyle: { color: '#fff' },
         padding: [15, 20],
-        formatter: (params: any) => {
+        formatter: (params: { data: { name: string, stock: number, transit: number, speed: number, trend: string, buyout: number, endDays: number } }) => {
           const data = params.data;
           return `
             <div style="font-family: Inter, sans-serif; min-width: 180px;">
@@ -247,7 +239,7 @@ export default function WarehousePage() {
             { value: [10, 18, 22], name: 'Набор посуды', stock: 210, transit: 20, speed: 18.6, trend: '-15%', buyout: 85, endDays: 11, itemStyle: { color: '#00d68f', shadowBlur: 20, shadowColor: 'rgba(0,214,143,0.3)' } },
             { value: [70, 14, 14], name: 'Куртка зимняя', stock: 18, transit: 5, speed: 14.5, trend: '+5%', buyout: 78, endDays: 3, itemStyle: { color: '#ff4757', shadowBlur: 20, shadowColor: 'rgba(255,71,87,0.3)' } }
           ],
-          symbolSize: (data: any) => data[2] * 2,
+          symbolSize: (data: [number, number, number]) => data[2] * 2,
           emphasis: {
             scale: 1.2,
             itemStyle: { shadowBlur: 30, shadowColor: 'rgba(108, 92, 231, 1)' }
@@ -336,7 +328,7 @@ export default function WarehousePage() {
         }
       ]
     };
-  }, [isMounted]);
+  }, []);
  
    const logQualityOption = useMemo(() => {
      if (!isMounted) return {};
@@ -349,10 +341,9 @@ export default function WarehousePage() {
          borderColor: 'rgba(108, 92, 231, 0.3)',
          borderWidth: 1,
          textStyle: { color: '#fff' },
-         formatter: (params: any) => {
-           let res = `<div style="font-family: Inter, sans-serif; padding: 5px;">
-             <div style="font-weight: 800; margin-bottom: 8px;">${params[0].name}</div>`;
-           params.forEach((p: any) => {
+         formatter: (params: unknown) => {
+           let res = `<div style="font-family: Inter, sans-serif; font-weight: 800; font-size: 12px; color: #fff; margin-bottom: 8px;">Оптимизация остатков</div>`;
+           (params as { seriesName: string, color: string, value: number }[]).forEach((p) => {
              res += `<div style="display: flex; justify-content: space-between; gap: 20px; font-size: 11px; margin-bottom: 4px;">
                <span style="color: #9099b7;">${p.seriesName}:</span>
                <b style="color: ${p.color};">${p.value}%</b>
@@ -440,7 +431,7 @@ export default function WarehousePage() {
          borderColor: 'rgba(108,92,231,0.4)',
          borderWidth: 1,
          textStyle: { color: '#fff' },
-         formatter: (params: any) => {
+         formatter: (params: { data: { name: string, value: number[] } }) => {
            const data = params.data;
            return `
              <div style="font-family: Inter, sans-serif; padding: 10px;">
@@ -481,9 +472,9 @@ export default function WarehousePage() {
        },
        series: [{
          type: 'scatter',
-         symbolSize: (val: any) => Math.sqrt(val[2]) * 8,
+         symbolSize: (val: number[]) => Math.sqrt(val[2]) * 8,
          itemStyle: {
-           color: (params: any) => {
+           color: (params: { data: { value: number[] } }) => {
               const ratio = params.data.value[1] / params.data.value[0];
               if (ratio < 0.5) return new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{ offset: 0, color: '#ff6b81' }, { offset: 1, color: '#ff4757' }]);
               if (ratio < 1.5) return new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{ offset: 0, color: '#ffc078' }, { offset: 1, color: '#ffa94d' }]);
@@ -595,11 +586,11 @@ export default function WarehousePage() {
           {/* Stats & Dead Stock Visualization (Existing) */}
           <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mb-8">
             {[
-              { icon: RotateCcw, label: "Оборачиваемость", val: "21 дн.", trend: "-2.5%", color: "text-accent-purple" },
-              { icon: AlertCircle, label: "Риск остатков", val: "35%", trend: "+5.2%", color: "text-accent-red" },
-              { icon: Zap, label: "Быстрые продажи", val: "35%", trend: "+3.1%", color: "text-accent-green" },
-              { icon: TrendingDown, label: "Низкая скорость", val: "20%", trend: "-1.8%", color: "text-accent-orange" },
-              { icon: ShoppingCart, label: "Перекуплено", val: "30%", trend: "-4%", color: "text-accent-blue" },
+              { icon: History, label: "Оборачиваемость", val: "21 дн.", trend: "-2.5%", color: "text-accent-purple" },
+              { icon: AlertTriangle, label: "Риск остатков", val: "35%", trend: "+5.2%", color: "text-accent-red" },
+              { icon: Activity, label: "Быстрые продажи", val: "35%", trend: "+3.1%", color: "text-accent-green" },
+              { icon: TrendingUp, label: "Низкая скорость", val: "20%", trend: "-1.8%", color: "text-accent-orange" },
+              { icon: Package, label: "Перекуплено", val: "30%", trend: "-4%", color: "text-accent-blue" },
             ].map((item, i) => (
               <div key={i} className="bg-dark-800/40 border border-card-border p-6 rounded-[2rem] hover:bg-dark-800 transition-all group">
                 <div className="flex items-center gap-3 mb-5">
@@ -747,7 +738,13 @@ export default function WarehousePage() {
                                    <td className="py-4 px-4 rounded-l-2xl">
                                       <div className="flex items-center gap-3">
                                          <div className="w-10 h-10 rounded-lg bg-dark-700 overflow-hidden flex-shrink-0">
-                                            <img src={`https://picsum.photos/seed/${row.id}/40/40`} alt="" className="w-full h-full object-cover" />
+                                            <Image 
+                                              src={`https://picsum.photos/seed/${row.id}/40/40`} 
+                                              alt="" 
+                                              width={40}
+                                              height={40}
+                                              className="w-full h-full object-cover" 
+                                            />
                                          </div>
                                          <div className="flex flex-col">
                                             <span className="text-sm font-bold text-white group-hover/row:text-accent-green transition-colors">{row.name}</span>
@@ -892,7 +889,7 @@ export default function WarehousePage() {
                            <h3 className="text-sm font-black text-white uppercase tracking-wider">AI Оптимизация места</h3>
                         </div>
                         <p className="text-xs text-dark-200 leading-relaxed italic mb-6">
-                           "Артикул <span className="text-white font-bold">Медведь Плюшевый 2м</span> имеет низкую литражную эффективность. Он занимает <span className="text-accent-red font-bold">40%</span> вашего лимита на складе Коледино, но дает только <span className="text-accent-red font-bold">5%</span> от общего числа заказов. Не везите его туда большими партиями."
+                           &quot;Артикул <span className="text-white font-bold">Медведь Плюшевый 2м</span> имеет низкую литражную эффективность. Он занимает <span className="text-accent-red font-bold">40%</span> вашего лимита на складе Коледино, но дает только <span className="text-accent-red font-bold">5%</span> от общего числа заказов. Не везите его туда большими партиями.&quot;
                         </p>
                         <button className="w-full py-3 bg-accent-blue text-white rounded-xl text-[11px] font-black uppercase tracking-widest hover:bg-blue-600 transition-all shadow-[0_10px_20px_rgba(59,130,246,0.3)]">
                            Пересмотреть поставку

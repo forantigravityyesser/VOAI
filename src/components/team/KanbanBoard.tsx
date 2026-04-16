@@ -6,7 +6,6 @@ import {
   Plus, 
   Paperclip, 
   MessageSquare, 
-  Calendar, 
   Video, 
   CheckCircle2, 
   Clock,
@@ -14,10 +13,7 @@ import {
   Zap,
   ChevronDown,
   LayoutGrid,
-  List,
-  Search,
-  ChevronLeft,
-  ChevronRight
+  List
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -73,6 +69,9 @@ const INITIAL_TASKS: Task[] = [
     categoryColor: "text-accent-blue bg-accent-blue/10",
     attachments: 2,
     comments: 5,
+    members: [
+      { name: "AL", avatar: "AL" }
+    ],
     status: "todo"
   },
   {
@@ -118,7 +117,7 @@ const INITIAL_TASKS: Task[] = [
 ];
 
 export default function KanbanBoard() {
-  const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS);
+  const [tasks] = useState<Task[]>(INITIAL_TASKS);
   const [activeTab, setActiveTab] = useState("Board");
 
   const columns = [
@@ -191,7 +190,7 @@ export default function KanbanBoard() {
 
               <div className="flex-1 space-y-6 overflow-y-auto pr-3 custom-scrollbar">
                 <AnimatePresence>
-                  {tasks.filter(t => t.status === col.id).map((task, idx) => (
+                  {tasks.filter(t => t.status === col.id).map((task) => (
                     <TaskCard key={task.id} task={task} isDragging={task.id === '4-drag'} />
                   ))}
                 </AnimatePresence>
@@ -282,7 +281,7 @@ function TaskCard({ task, isDragging }: { task: Task; isDragging?: boolean }) {
                   <div 
                     key={i} 
                     className={`h-1.5 flex-1 rounded-full transition-all duration-700 ${
-                      i < task.progress.current ? 'bg-accent-red shadow-[0_0_12px_rgba(255,107,107,0.5)] scale-y-110' : 'bg-dark-700'
+                      task.progress && i < task.progress.current ? 'bg-accent-red shadow-[0_0_12px_rgba(255,107,107,0.5)] scale-y-110' : 'bg-dark-700'
                     }`} 
                   />
                 ))}

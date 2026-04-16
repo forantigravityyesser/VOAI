@@ -62,8 +62,8 @@ export default function UnitEconomyWaterfall() {
       backgroundColor: '#161923',
       borderColor: '#2a2f45',
       textStyle: { color: '#fff', fontFamily: 'inherit' },
-      formatter: function (params: any) {
-        const tar = params[1];
+      formatter: function (params: unknown) {
+        const tar = (params as { name: string, value: number }[])[1];
         const sign = tar.name === 'Цена на ВБ' || tar.name === 'Чистая прибыль' ? '' : '- ';
         const colorText = tar.name === 'Чистая прибыль' ? (tar.value < 0 ? '#ff4757' : '#00b8d9') : (tar.name === 'Цена на ВБ' ? '#00d68f' : '#ff4757');
         return `
@@ -106,9 +106,10 @@ export default function UnitEconomyWaterfall() {
           color: '#fff',
           fontWeight: 'bold',
           fontSize: 9,
-          formatter: (params: any) => {
-             const pct = Math.abs((params.value / data[0].value) * 100).toFixed(0);
-             return `${params.value} ₽\n(${pct}%)`;
+          formatter: (params: unknown) => {
+             const val = (params as { value: number }).value;
+             const pct = Math.abs((val / data[0].value) * 100).toFixed(0);
+             return `${val} ₽\n(${pct}%)`;
           }
         },
         itemStyle: { borderRadius: 4 },

@@ -13,10 +13,9 @@ import {
 interface UserInteractionContainerProps {
   onSend: (text: string) => void;
   isGenerating: boolean;
-  isStarting: boolean;
 }
 
-export default function UserInteractionContainer({ onSend, isGenerating, isStarting }: UserInteractionContainerProps) {
+export default function UserInteractionContainer({ onSend, isGenerating }: UserInteractionContainerProps) {
   const [text, setText] = useState("");
 
   const handleSend = () => {

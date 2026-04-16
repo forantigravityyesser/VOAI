@@ -152,7 +152,7 @@ export default function FinanceTimeline() {
           ref={scrollRef}
           className="flex gap-8 overflow-x-auto pb-6 pt-4 scroll-smooth no-scrollbar"
         >
-          {events.map((event, idx) => (
+          {events.map((event) => (
             <div key={event.id} className="min-w-[280px] relative group/event">
                {/* Dot on the line */}
                <div className="absolute top-[34px] left-1/2 -translate-x-1/2 z-20">

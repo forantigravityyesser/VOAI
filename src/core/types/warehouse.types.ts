@@ -10,7 +10,7 @@ import {
   RecommendedPlanSchema 
 } from '../schemas/warehouse.schema';
 
-export type StockItem = z.infer<typeof StockSchema>;
+export type Stock = z.infer<typeof StockSchema>;
 export type DeadStock = z.infer<typeof DeadStockSchema>;
 export type TransitItem = z.infer<typeof TransitItemSchema>;
 export type OrderHistoryItem = z.infer<typeof OrderHistoryItemSchema>;

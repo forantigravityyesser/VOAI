@@ -1,6 +1,6 @@
 "use client";
 
-import { RefreshCw, Download, Clock, ShieldCheck, Circle } from "lucide-react";
+import { RefreshCw, Download } from "lucide-react";
 
 interface KPIItem {
   label: string;

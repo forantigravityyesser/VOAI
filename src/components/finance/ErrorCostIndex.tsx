@@ -132,7 +132,7 @@ export default function ErrorCostIndex() {
               <div>
                  <p className="text-xs font-black text-white uppercase tracking-wider mb-2">ИИ-Рекомендация для менеджера</p>
                  <p className="text-xs font-bold text-dark-400 leading-relaxed">
-                   Критический уровень! 80% штрафов вызвано неверным КИЗ и расхождением габаритов в карточках товаров "Кроссовки". Проверка упаковки вернет вам <span className="text-white font-black">{Math.round(fines * 0.8).toLocaleString()} ₽</span> в следующем месяце.
+                   Критический уровень! 80% штрафов вызвано неверным КИЗ и расхождением габаритов в карточках товаров &quot;Кроссовки&quot;. Проверка упаковки вернет вам <span className="text-white font-black">{Math.round(fines * 0.8).toLocaleString()} ₽</span> в следующем месяце.
                  </p>
               </div>
            </div>

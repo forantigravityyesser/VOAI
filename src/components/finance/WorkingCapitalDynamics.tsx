@@ -2,7 +2,7 @@
 
 import React from "react";
 import ReactECharts from "echarts-for-react";
-import { TrendingUp, AlertCircle, BarChart, HardHat, Info } from "lucide-react";
+import { TrendingUp, AlertCircle, Info } from "lucide-react";
 
 export default function WorkingCapitalDynamics() {
   const months = ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"];
@@ -19,9 +19,10 @@ export default function WorkingCapitalDynamics() {
       backgroundColor: '#161923',
       borderColor: '#2a2f45',
       textStyle: { color: '#fff', fontSize: 12, fontFamily: 'inherit' },
-      formatter: function(params: any) {
-        let res = `<div style="padding:10px;"><div style="font-weight:900;margin-bottom:8px;color:#fff;text-transform:uppercase;letter-spacing:1px;font-size:10px;">ДИНАМИКА КАПИТАЛА - ${params[0].name}</div>`;
-        params.forEach((item: any) => {
+      formatter: function(params: unknown) {
+        const pArray = params as { name: string, seriesName: string, value: number, color: string }[];
+        let res = `<div style="padding:10px;"><div style="font-weight:900;margin-bottom:8px;color:#fff;text-transform:uppercase;letter-spacing:1px;font-size:10px;">ДИНАМИКА КАПИТАЛА - ${pArray[0].name}</div>`;
+        pArray.forEach((item) => {
           const val = item.value.toLocaleString();
           res += `<div style="display:flex;justify-content:space-between;gap:20px;margin-bottom:4px;">
                     <span style="color:#9099b7;font-weight:bold;">${item.seriesName}:</span>

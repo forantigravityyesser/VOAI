@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
 interface ToastProps {

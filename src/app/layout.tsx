@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased bg-dark-900 text-white font-sans`}>
         <div className="flex min-h-screen bg-dark-900">
           <Sidebar />
-          <div className="flex-1 transition-all duration-300 ease-in-out" style={{ marginLeft: 'var(--sidebar-width)' }}>
+          <div className="flex-1 min-w-0 transition-all duration-300 ease-in-out" style={{ paddingLeft: 'var(--sidebar-width)' }}>
             <Header />
             {children}
           </div>
