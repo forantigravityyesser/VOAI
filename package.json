@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@insforge/sdk": "^1.2.5",
+    "clsx": "^2.1.1",
     "echarts": "^6.0.0",
     "echarts-for-react": "^3.0.6",
     "framer-motion": "^12.38.0",
@@ -17,6 +19,7 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "recharts": "^3.8.1",
+    "tailwind-merge": "^3.5.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {

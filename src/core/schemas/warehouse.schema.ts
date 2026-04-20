@@ -57,6 +57,8 @@ export const WarehouseDistributionSchema = z.object({
   status: z.string(),
   color: z.string(),
   bar: z.string(),
+  acceptanceCoeff: z.number(),
+  demandCoverage: z.number(),
 });
 
 export const LocalizationSchema = z.object({
@@ -74,6 +76,7 @@ export const RecommendedPlanSchema = z.object({
   current: z.number(),
   recommended: z.number(),
   forecast: z.number(),
+  daysToZero: z.number(),
   budget: z.string(),
   warehouse: z.string(),
   status: z.string(),

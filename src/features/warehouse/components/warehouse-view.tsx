@@ -2,7 +2,7 @@ import React from "react";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import * as echarts from "echarts";
-import { Stock, TransitItem, OrderHistoryItem, WarehouseDistribution, WarehouseTab, DeadStock, LocalizationItem, RecommendedPlan } from "@/core/types/warehouse.types";
+import { Stock, TransitItem, OrderHistoryItem, WarehouseDistribution, WarehouseTab, LocalizationItem, RecommendedPlan } from "@/core/types/warehouse.types";
 import { WarehouseHealthView } from "../views/warehouse-health-view";
 import { ProductEfficiencyView } from "../views/product-efficiency-view";
 import { PlanningView } from "../views/planning-view";
@@ -14,12 +14,10 @@ interface WarehouseViewProps {
   deadStockOption: echarts.EChartsOption;
   bubbleOption: echarts.EChartsOption;
   gaugeOption: echarts.EChartsOption;
-  logQualityOption: echarts.EChartsOption;
   spaceEfficiencyOption: echarts.EChartsOption;
   stockData: Stock[];
   goodsInTransit: TransitItem[];
   orderHistory: OrderHistoryItem[];
-  deadStockData: DeadStock[];
   distribution: WarehouseDistribution[];
   localizationData: LocalizationItem[];
   recommendedPlans: RecommendedPlan[];
@@ -33,12 +31,10 @@ export default function WarehouseView({
   deadStockOption,
   bubbleOption,
   gaugeOption,
-  logQualityOption,
   spaceEfficiencyOption,
   stockData,
   goodsInTransit,
   orderHistory,
-  deadStockData,
   distribution,
   localizationData,
   recommendedPlans
@@ -89,7 +85,6 @@ export default function WarehouseView({
           <WarehouseHealthView 
             deadStockOption={deadStockOption} 
             stockData={stockData} 
-            deadStockData={deadStockData}
             activeColor={activeColor} 
           />
         )}
@@ -98,7 +93,6 @@ export default function WarehouseView({
           <ProductEfficiencyView 
             bubbleOption={bubbleOption}
             gaugeOption={gaugeOption}
-            logQualityOption={logQualityOption}
             spaceEfficiencyOption={spaceEfficiencyOption}
             activeColor={activeColor}
             localizationData={localizationData}

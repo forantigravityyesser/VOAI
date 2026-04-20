@@ -1,0 +1,226 @@
+{
+  "main": {
+    "id": "c64714685b37a339",
+    "type": "split",
+    "children": [
+      {
+        "id": "e6a19576c1cc74d8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c6846744c430a9ea",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "06_Dev_Logs/Changelog_История_Релизов.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Changelog_История_Релизов"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2e8d972757fd5980",
+    "type": "split",
+    "children": [
+      {
+        "id": "bbbffc6a0164a793",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2e5de90b2e0f4d68",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "fa902689838e9ed5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "2fd9ed66934571a8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "58c08e7604ca2c19",
+    "type": "split",
+    "children": [
+      {
+        "id": "7ce3604910dd5275",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "89df87513f8bdc80",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "05_Integrations/Wildberries_API_Спецификация.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки для Wildberries_API_Спецификация"
+            }
+          },
+          {
+            "id": "090bab53160ebd19",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "05_Integrations/Wildberries_API_Спецификация.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки из Wildberries_API_Спецификация"
+            }
+          },
+          {
+            "id": "aed71f0d1b79858b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "872c4ec9f7920954",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Все свойства"
+            }
+          },
+          {
+            "id": "be28e217fd92c882",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "05_Integrations/Wildberries_API_Спецификация.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Структура Wildberries_API_Спецификация"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false,
+      "bases:Создать новую базу": false
+    }
+  },
+  "active": "c6846744c430a9ea",
+  "lastOpenFiles": [
+    "06_Dev_Logs/Daily_Logs/2026-04-20_Warehouse_Modals_Implementation.md",
+    "06_Dev_Logs/Daily_Logs/2026-04-20.md",
+    "05_Integrations/Wildberries_API_Спецификация.md",
+    "00_Dashboard/🏠 Index_Проекта.md",
+    "05_Integrations/Telegram_Bot_API.md",
+    "03_Databases/03.03_Кэш_и_Очереди_(Redis).md",
+    "03_Databases/03.01_Реляционная_БД_(PostgreSQL).md",
+    "02_Architecture/Модель_данных_и_БД.md",
+    "02_Architecture/Инфраструктура_и_Деплой.md",
+    "05_Integrations/Платежный_Шлюз.md",
+    "04_AI_Core/Логика_Маршрутизации_LLM.md",
+    "01_Product/Roadmap_и_Бэклог.md",
+    "01_Product/UI_UX_и_Дизайн_система.md",
+    "02_Architecture/Технологический_стек.md",
+    "02_Architecture/Структура_репозитория.md",
+    "02_Architecture/Глобальная_архитектура.md",
+    "01_Product/Актуальный_функционал_(MVP).md",
+    "01_Product/Описание_проекта_и_ЦА.md",
+    "99_Templates/Шаблон_Описания_Фичи.md",
+    "99_Templates/Шаблон_Дневника_Разработчика.md",
+    "06_Dev_Logs/Changelog_История_Релизов.md",
+    "04_AI_Core/Субагенты_Hermes.md",
+    "04_AI_Core/Оркестрация_CrewAI_(Flows).md",
+    "04_AI_Core/База_Промптов.md",
+    "03_Databases/03.02_Векторная_БД_(Chroma_Qdrant).md",
+    "raw/Wildberries_API_2026_Analysis.md",
+    "04_AI_Core",
+    "03_Databases",
+    "02_Architecture",
+    "01_Product",
+    "98_Raw_Sources",
+    "05_Integrations",
+    "06_Dev_Logs/Daily_Logs",
+    "99_Templates",
+    "06_Dev_Logs",
+    "00_Dashboard",
+    "Без названия.canvas"
+  ]
+}
